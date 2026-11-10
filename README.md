@@ -31,7 +31,7 @@ Random Forest regressor (100 trees), 80/20 train/test split, random_state=42. Th
 ## Limitations
 
 - Re-running the Random Forest on five other random splits gave MAE between about 264 and 270 USD (single-split result: 266), so the result is stable.
-- MAE is an average in dollars; errors on expensive diamonds are likely larger than on cheap ones (not checked yet).
+- MAE is an average in dollars, and it hides a big gap: on the test set the error was about 72 USD for diamonds under 2,500 USD but about 852 USD for diamonds over 8,000 USD (not yet checked as a percentage of price).
 - Feature importance is shared among correlated columns (`carat`, `x`, `y`, `z`) and across one-hot columns, so individual values should be read with care.
 - No hyperparameter tuning and no cross-validation.
 
@@ -48,4 +48,4 @@ Python, pandas, seaborn (dataset), matplotlib, scikit-learn, Google Colab.
 - الارتباط بين الوزن والسعر 0.92، لكن العلاقة منحنى مش خط مستقيم.
 - عامل خفي: القطع `Ideal` أرخص متوسط سعر لأن ماسته أخف (0.70 قيراط)، فالمقارنة بالمتوسط وحده بتخدع.
 - النموذج `Random Forest` وصل لمتوسط غلط 266 دولار، مقابل 3,008 دولار للنموذج الغبي (أحسن بحوالي 91 بالمئة).
-- حدود النتيجة: جرّبنا 5 تقسيمات تانية والغلط ثابت (من 264 لـ 270 دولار)، والغلط على الألماس الغالي غالبًا أكبر ولسه مفحصناهوش.
+- حدود النتيجة: جرّبنا 5 تقسيمات تانية والغلط ثابت (من 264 لـ 270 دولار)، لكن الغلط على الألماس الغالي (أكتر من 8,000) حوالي 852 دولار مقابل 72 دولار للرخيص (أقل من 2,500).
